@@ -1,0 +1,21 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.deal-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  padding: 6px 4px;
+  background-color: $white;
+  border: 1px solid $border-color-gray;
+  border-radius: 12px;
+
+  &__item {
+    font-size: 12px;
+
+    &:hover {
+      background-color: $background-color-gray;
+      border-radius: 6px;
+    }
+  }
+}

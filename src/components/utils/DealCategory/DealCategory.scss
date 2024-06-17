@@ -1,0 +1,107 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.deal-category {
+  display: flex;
+  flex-direction: column;
+  width: 262px;
+  height: 75px;
+  padding: 12px;
+  border-radius: 12px;
+
+  $colors-map: (
+    rose: $rose,
+    purple: $purple,
+    blue: $blue,
+    yellow: $yellow,
+    green: $green,
+    pink: $pink
+  );
+
+  @each $color-name, $color-value in $colors-map {
+    &--#{$color-name} {
+      background-color: $color-value;
+    }
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-top: 3px;
+    }
+  }
+
+  &__title {
+    margin-right: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  &__count {
+    padding: 0 6px;
+    height: 24px;
+    min-width: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px;
+
+    $colors-map: (
+      rose: ($rose-dark, $rose-strong),
+      purple: ($purple-dark, $purple-strong),
+      blue: ($blue-dark, $blue-strong),
+      yellow: ($yellow-dark, $yellow-strong),
+      green: ($green-dark, $green-strong),
+      pink: ($pink-dark, $pink-strong)
+    );
+
+
+    @each $color-name, $color-values in $colors-map {
+      &--#{$color-name} {
+        background-color: nth($color-values, 1);
+        color: nth($color-values, 2);
+      }
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__info-icon {
+    margin-right: 4px;
+    margin-bottom: 3px;
+    @include icon;
+    @include square(12px);
+    background-image: url('../../../media/icons/info-icon-black.svg');
+  }
+
+  &__weight {
+    margin-bottom: 1px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  &__total {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+}
+
+
+
+
+
+
+
+
+

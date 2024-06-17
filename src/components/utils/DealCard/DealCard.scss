@@ -1,0 +1,133 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.deal-card {
+  display: flex;
+  flex-direction: column;
+  width: 238px;
+  height: 76px;
+  padding: 11px;
+  border: 1px solid $border-color-gray;
+  border-radius: 8px;
+  background-color: $white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $background-color-gray;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    @include circle(20px);
+
+    &:hover {
+      background-color: $blue;
+    }
+
+    &-dot {
+      flex-shrink: 0;
+      @include circle(2px);
+      background-color: $gray;
+      margin-bottom: 3px;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+
+    &-dropdown {
+      position: absolute;
+      top: 22px;
+      right: 0;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+  }
+
+  &__not-owned-icon {
+    @include icon;
+    @include square(16px);
+    background-image: url('../../../media/icons/not-owned-icon-gray.svg');
+  }
+
+  &__logo {
+    &-container {
+      position: relative;
+      margin-right: 10px;
+      @include square(24px);
+    }
+
+    @include icon;
+    @include square(24px);
+  }
+
+  &__status {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    @include icon;
+    @include square(9px);
+
+    &--active {
+      background-image: url('../../../media/icons/status-icon-green.svg');
+    }
+    
+    &--paused {
+      background-image: url('../../../media/icons/status-icon-yellow.svg');
+    }
+
+    &--inactive {
+      background-image: url('../../../media/icons/status-icon-red.svg');
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__date {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      margin-right: 4px;
+      @include icon;
+      @include square(12px);
+      background-image: url('../../../media/icons/date-icon-gray.svg');
+    }
+
+    &-text {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 400;
+      color: $gray;
+    }
+  }
+
+  &__money {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+}
+}

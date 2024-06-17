@@ -1,0 +1,158 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  
+  @include onDesktop {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 16px;
+    height: 88px;
+  }
+
+  &__logo {
+    width: 98px;
+    height: 27px;
+    @include icon;
+    background-image: url('../../media/logos/crono-logo.svg');
+  }
+
+  &__menu-button {
+    @include onTablet {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: none;
+    padding-left: 24px;
+    margin-left: 16px;
+    border-left: 1px solid $border-color-gray;
+
+    @include onTablet {
+      display: flex;
+    }
+    
+    @include onLaptop {
+      padding-left: 32px;
+      margin-left: 24px;
+    }
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    width: 100%;
+
+    @include onDesktop {
+      padding: 0;
+      width: auto;
+    }
+  }
+
+  &__left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $border-color-gray;
+
+    @include onTablet {
+      justify-content: flex-start;
+      height: 88px;
+    }
+
+    @include onDesktop {
+      height: auto;
+      border: 0;
+      background-color: $white;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px 12px;
+
+    @include onDesktop {
+      padding: 0;
+      height: 56px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+  }
+
+  &__icon {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include square(40px);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 300ms;
+
+      &:hover {
+        background-color: $background-color-gray;
+      }
+
+      &--news {
+        background-color: $yellow;
+        margin-left: 16px;
+
+        &:hover {
+          background-color: $yellow-dark;
+        }
+      }
+    }
+
+    @include icon;
+    @include square(24px);
+
+    &--statistics {
+      background-image: url('../../media/icons/statistics-icon-gray.svg');
+    }
+
+    &--news {
+      background-image: url('../../media/icons/news-icon-yellow.svg');
+    }
+  }
+
+  &__company {
+    display: flex;
+    align-items: center;
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      margin-right: 12px;
+    }
+    
+    &-name {
+      line-height: 22px;
+      font-weight: 400;
+    }
+
+    &-category {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: $gray;
+    }
+
+    &-logo {
+      @include square(48px);
+      @include icon;
+      background-image: url('../../media/logos/my-company-logo.svg');
+    }
+  }
+}

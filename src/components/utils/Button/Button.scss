@@ -1,0 +1,49 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 118px;
+  height: 40px;
+  border-radius: 24px;
+  cursor: pointer;
+  
+  &--white {
+    background-color: $white;
+  }
+
+  &--black {
+    background-color: $black;
+  }
+
+  &--green {
+    background-color: $green-button;
+
+    &:hover {
+      background-color: #1bc9c0;
+    }
+  }
+
+  &__icon {
+    margin-right: 4px;
+    @include icon;
+    @include square(16px);
+    background-image: url('../../../media/icons/plus-icon-white.svg');
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+
+    &--white {
+      color: $white;
+    }
+
+    &--black {
+      color: $black;
+    }
+  }
+}

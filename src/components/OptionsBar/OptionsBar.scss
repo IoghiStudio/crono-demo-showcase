@@ -1,0 +1,124 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+$option-bar-mobile-breakpoint: 550px;
+
+.options-bar {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 21px 15px 15px;
+  width: 100%;
+  border-radius: 16px;
+  background-color: $white;
+  border: 1px solid $border-color-gray;
+  
+  @include onLaptop {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+    
+    &:first-child {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      
+      @include onTabletSmall {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      @include onLaptop {
+        margin-bottom: 0;
+      }
+    }
+    
+    &:last-child {
+      display: flex;
+      flex-direction: column;
+
+      @media (min-width: $option-bar-mobile-breakpoint) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      align-self: flex-start;
+      margin-bottom: 8px;
+
+      @media (min-width: $option-bar-mobile-breakpoint) {
+        margin: 0;
+      }
+    }
+  }
+
+  &__select {
+    margin-right: 40px;
+  }
+
+  &__dropdown {
+    position: relative;
+    display: flex;
+  }
+
+  &__search {
+    margin-bottom: 8px;
+
+    @include onTabletSmall {
+      margin: 0;
+    }
+  }
+
+  &__switch {
+    display: flex;
+    margin-right: 25px;
+
+    &-text {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 500;
+      color: $gray;
+    }
+
+    &-switch {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+  }
+
+  &__filters {
+    margin-right: 16px;
+  }
+
+  &__layout-switch {
+    margin-right: 17px;
+  }
+}
+
+.for-tablet {
+  display: flex;
+    
+  @include onLaptop {
+    display: none;
+  }
+}
+
+.for-laptop {
+  display: none;
+    
+  @include onLaptop {
+    display: flex;
+  }
+}

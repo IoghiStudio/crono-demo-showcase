@@ -1,0 +1,28 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.pipelines {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  &__options-bar {
+    margin-bottom: 8px;
+  }
+
+  &__deals {
+    display: flex;
+    height: calc(100% - 78px);
+    overflow-x: scroll;
+    padding-bottom: 8px;
+  }
+  
+  &__deal {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 8px;
+    }
+  }
+}

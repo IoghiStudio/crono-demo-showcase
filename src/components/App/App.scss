@@ -1,0 +1,29 @@
+@import '../../styles/mixins';
+@import '../../styles/vars';
+
+.app {
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: $background-color-gray;
+  color: $black;
+
+  &__menu {
+    padding: 16px 16px 0;
+    height: calc(100vh - 126px);
+    overflow-y: hidden;
+
+    @include onTablet {
+      height: calc(100vh - 152px);
+    }
+
+    @include onDesktop {
+      height: calc(100vh - 88px);
+    }
+
+    @media (max-height: 636px) {
+      min-height: 508px;
+      overflow-y: scroll;
+    }
+  }
+}

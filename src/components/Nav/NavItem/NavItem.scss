@@ -1,0 +1,116 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: $gray;
+  height: 30px;
+  padding: 12px 0;
+  margin: 12px 0;
+  transition: color 300ms;
+  cursor: pointer;
+  
+  &:hover {
+    color: $green-texts-borders;
+  }
+  
+  @include onTablet {
+    flex-direction: column;
+    align-items: center;
+    width: 86px;
+    height: 48px;
+    padding: 0;
+    margin: 0;
+  }
+
+  @include onLaptop {
+    width: 96px;
+  }
+
+  &__icon {
+    @include icon;
+    @include square(32px);
+    margin-right: 16px;
+    
+    @include onTablet {
+      @include square(24px);
+      margin-right: 0;
+      margin-bottom: 6px;
+    }
+
+    &--search {
+      background-image: url('../../../media/icons/search-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/search-icon-green.svg');
+      }
+    }
+    
+    &--lists {
+      background-image: url('../../../media/icons/lists-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/lists-icon-green.svg');
+      }
+    }
+    
+    &--templates {
+      background-image: url('../../../media/icons/add-template-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/add-template-icon-green.svg');
+      }
+    }
+    
+    &--strategy {
+      background-image: url('../../../media/icons/strategy-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/strategy-icon-green.svg');
+      }
+    }
+    
+    &--tasks {
+      background-image: url('../../../media/icons/tasks-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/tasks-icon-green.svg');
+      }
+    }
+    
+    &--pipelines {
+      background-image: url('../../../media/icons/pipelines-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/pipelines-icon-green.svg');
+      }
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+
+    &--active {
+      color: $green-texts-borders;
+    }
+  }
+
+  &__border {
+    display: none;
+    position: absolute;
+    top: 65px;
+    height: 3px;
+    width: 90px;
+    background-color: $green-texts-borders;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.filter {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid $border-color-gray;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 300ms;
+
+  &:hover {
+    background-color: $background-color-gray;
+  }
+
+  &__text {
+    width: 62px;
+    margin: 0 8px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+  }
+
+  &__icon {
+    @include icon;
+    @include square(24px);
+    background-image: url('../../../media/icons/filter-icon-black.svg');
+  }
+}

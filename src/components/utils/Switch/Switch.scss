@@ -1,0 +1,28 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.switch {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  width: 32px;
+  background-color: $switch-bg-color-gray;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 200ms;
+
+  &--active {
+    background-color: $blue;
+  }
+
+  &__dot {
+    @include circle(16px);
+    background-color: $gray;
+    transition: transform 200ms;
+
+    &--active {
+      transform: translateX(16px);
+      background-color: $blue-strong;
+    }
+  }
+}

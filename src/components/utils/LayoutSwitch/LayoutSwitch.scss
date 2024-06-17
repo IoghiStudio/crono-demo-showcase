@@ -1,0 +1,47 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.layout-switch {
+  display: flex;
+  background-color: $background-color-gray;
+  padding: 4px;
+  border-radius: 8px;
+
+  &__icon {
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include square(32px);
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:first-child {
+        margin-right: 2px;
+      }
+
+      &--active {
+        background-color: #fff;
+      }
+    }
+
+    @include icon;
+    @include square(24px);
+    
+    &--row {
+      background-image: url('../../../media/icons/row-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/row-icon-black.svg');
+      }
+    }
+
+    &--column {
+      background-image: url('../../../media/icons/column-icon-gray.svg');
+      
+      &--active {
+        background-image: url('../../../media/icons/column-icon-black.svg');
+      }
+    }
+  }
+}

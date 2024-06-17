@@ -1,0 +1,30 @@
+@import '../../../styles/mixins';
+@import '../../../styles/vars';
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 210px;
+  height: 40px;
+  padding: 8px 8px 8px 16px;
+  border: 1px solid $border-color-gray;
+  border-radius: 8px;
+  cursor: pointer;
+
+  @include onLaptop {
+    width: 239px;
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+
+  &__icon {
+    @include icon;
+    @include square(24px);
+    background-image: url('../../../media/icons/arrow-icon-gray.svg');
+  }
+}

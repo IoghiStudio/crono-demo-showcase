@@ -1,0 +1,25 @@
+@import '../../styles/vars';
+@import '../..//styles/mixins';
+
+.menu {
+  position: fixed;
+  z-index: 2;
+  top: 126px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+  background-color: $blue;
+  transition: transform 0.6s;
+  transform: translateX(100%);
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  @include onTablet {
+    transform: translateX(100%);
+  }
+}
