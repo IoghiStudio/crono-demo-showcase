@@ -1,13 +1,10 @@
 import cn from 'classnames';
 import './DealCard.scss';
-import { EDealCategory } from '../../../data/dealsData';
+import { ECompanyStatus, EDealCategory } from '../../../data/dealsData';
 import { DealMenu } from '../DealMenu';
-
-export enum ECompanyStatus {
-  Active,
-  Paused,
-  Inactive,
-};
+import { useMenuContext } from '../../../contextApi/menuContext/store';
+import { useDealsContext } from '../../../contextApi/dealsContext/store';
+import { useCallback, useEffect } from 'react';
 
 export interface IDealCardData {
   id: number;
@@ -25,12 +22,79 @@ export interface IDealCardData {
 export const DealCard: React.FC<IDealCardData> = ({
   id,
   name,
+  category,
   isOwned,
   logo,
   status,
   date,
   money,
 }) => {
+  const {
+    dealMenuId,
+    setDealMenuId,
+  } = useMenuContext();
+
+  const {
+    qualifiedDeals,
+    demoDeals,
+    negotiationDeals,
+    contractOutDeals,
+    closedWonDeals,
+    closedLostDeals,
+    setQualifiedDeals,
+    setDemoDeals,
+    setNegotiationDeals,
+    setContractOutDeals,
+    setClosedWonDeals,
+    setClosedLostDeals,
+  } = useDealsContext();
+
+  const handleOnDelete = useCallback((id: number, category: EDealCategory) => {
+    switch(category) {
+      case EDealCategory.Qualified:
+        if (!qualifiedDeals) return;
+        setQualifiedDeals(qualifiedDeals.filter(deal => deal.id !== id));
+        break;
+  
+      case EDealCategory.Demo:
+        if (!demoDeals) return;
+        setDemoDeals(demoDeals.filter(deal => deal.id !== id));
+        break;
+  
+      case EDealCategory.Negotiation:
+        if (!negotiationDeals) return;
+        setNegotiationDeals(negotiationDeals.filter(deal => deal.id !== id));
+        break;
+  
+      case EDealCategory.ContractOut:
+        if (!contractOutDeals) return;
+        setContractOutDeals(contractOutDeals.filter(deal => deal.id !== id));
+        break;
+  
+      case EDealCategory.ClosedWon:
+        if (!closedWonDeals) return;
+        setClosedWonDeals(closedWonDeals.filter(deal => deal.id !== id));
+        break;
+  
+      case EDealCategory.ClosedLost:
+        if (!closedLostDeals) return;
+        setClosedLostDeals(closedLostDeals.filter(deal => deal.id !== id));
+        break;
+  
+      default:
+        break;
+    }
+  
+    setDealMenuId(null);
+  }, [
+    qualifiedDeals, demoDeals, negotiationDeals, contractOutDeals, 
+    closedWonDeals, closedLostDeals, 
+    setQualifiedDeals, setDemoDeals, setNegotiationDeals, 
+    setContractOutDeals, setClosedWonDeals, setClosedLostDeals
+  ]);
+  
+
+
   return (
     <div className="deal-card">
       <div className="deal-card__section">
@@ -41,17 +105,32 @@ export const DealCard: React.FC<IDealCardData> = ({
           <div className="deal-card__not-owned-icon"/>
         ) : (
           <div
-            className='deal-card__menu'
-          >
-            <div className="deal-card__menu-dot"/>
-            <div className="deal-card__menu-dot"/>
-            <div className="deal-card__menu-dot"/>
+            onClick={() => {
+              if (dealMenuId === id) {
+                setDealMenuId(null);
+                return;
+              }
 
-            <div className="deal-card__menu-dropdown">
-              <DealMenu
-                onDelete={() => {}}
-              />
-            </div>
+              setDealMenuId(id);
+            }}
+            className={cn('deal-card__menu', {
+              'deal-card__menu--active': dealMenuId === id
+            })}
+          >
+            {dealMenuId === id && (
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="deal-card__menu-dropdown"
+              >
+                <DealMenu
+                  onDelete={() => handleOnDelete(id, category)}
+                />
+              </div>
+            )}
+
+            <div className="deal-card__menu-dot"/>
+            <div className="deal-card__menu-dot"/>
+            <div className="deal-card__menu-dot"/>
           </div>
         )}
       </div>

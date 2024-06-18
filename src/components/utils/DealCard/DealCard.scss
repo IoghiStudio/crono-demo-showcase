@@ -36,7 +36,7 @@
     padding: 2px;
     @include circle(20px);
 
-    &:hover {
+    &:hover, &--active {
       background-color: $blue;
     }
 
@@ -53,6 +53,7 @@
 
     &-dropdown {
       position: absolute;
+      z-index: 3;
       top: 22px;
       right: 0;
     }
@@ -129,5 +130,5 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 22px;
-}
+  }
 }

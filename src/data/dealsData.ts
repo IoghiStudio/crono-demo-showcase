@@ -1,4 +1,10 @@
-import { ECompanyStatus, IDealCardData } from "../components/utils/DealCard";
+import { IDealCardData } from "../components/utils/DealCard";
+
+export enum ECompanyStatus {
+  Active,
+  Paused,
+  Inactive,
+};
 
 export enum EDealCategory {
   Qualified,

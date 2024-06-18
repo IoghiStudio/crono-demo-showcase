@@ -13,7 +13,7 @@ export const DealMenu: React.FC<Props> = ({
         Delete deal
       </div>
 
-      <div onClick={onDelete} className="deal-menu__item">
+      <div className="deal-menu__item">
         Test option
       </div>
     </div>
