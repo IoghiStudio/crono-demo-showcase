@@ -260,6 +260,11 @@ export const Pipelines: React.FC = () => {
   const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>, category: EDealCategory) => {
     const droppedDealData: IDealCardData = JSON.parse(e.dataTransfer.getData("application/json"));
 
+    if (!droppedDealData.isOwned) {
+      console.log("Only owned deals can be moved.");
+      return;
+    }
+
     switch (droppedDealData.category) {
       case EDealCategory.Qualified:
         if (qualifiedDeals) {
